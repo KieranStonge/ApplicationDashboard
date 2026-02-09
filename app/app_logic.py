@@ -1,5 +1,5 @@
-from stages import STAGE_MAP
-from display import print_table, print_stage_summary
+from app.stages import STAGE_MAP
+from app.display import print_table, print_stage_summary
 
 def init_db(cursor):
     cursor.execute("""
