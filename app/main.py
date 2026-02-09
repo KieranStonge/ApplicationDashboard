@@ -13,10 +13,25 @@ def main():
     )
     """)
 
+    company = input("Company: ")
+    role = input("Role: ")
+    stage = input("Stage (Applied / Interview / Rejected / Offer): ")
+
+    cursor.execute("""
+    INSERT INTO applications (company, role, stage)
+    VALUES (?, ?, ?)
+    """, (company, role, stage))
+
     conn.commit()
+
+    cursor.execute("SELECT id, company, role, stage FROM applications")
+    rows = cursor.fetchall()
+
     conn.close()
 
-    print("Database Intialized")
+    print("\nApplications: ")
+    for r in rows:
+        print(r)
 
 if __name__ == "__main__":
     main()
